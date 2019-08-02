@@ -56,13 +56,14 @@ export default class Login extends Component {
               size="medium"
               color="primary"
               aria-label="login"
+              type="submit"
             >
               Login
             </Fab>
             <Button
               className="Login-btn--secondary"
               color="primary"
-              type="submit"
+              type="button"
             >
               Login as existing user
             </Button>
