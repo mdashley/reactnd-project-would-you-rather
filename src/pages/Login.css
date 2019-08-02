@@ -1,0 +1,33 @@
+.Login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.Login-card {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+}
+
+.Login-logo {
+  margin-bottom: 8px;
+}
+
+.Login-card .MuiTextField-root {
+  width: 100%;
+}
+
+.Login-btn--primary {
+  width: 100% !important;
+  margin-top: 12px !important;
+}
+
+.Login-btn--secondary {
+  width: 100% !important;
+  margin-top: 20px !important;
+}
