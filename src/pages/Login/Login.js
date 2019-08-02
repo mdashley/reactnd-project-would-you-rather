@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { authenticateUser } from '../../actions/authedUser';
 import './Login.css';
 import logo from '../../logo.svg';
 import Button from '@material-ui/core/Button';
 import Fab from '@material-ui/core/Fab';
 import TextField from '@material-ui/core/TextField';
 
-export default class Login extends Component {
+class Login extends Component {
   state = {
     username: '',
     password: '',
@@ -23,11 +26,24 @@ export default class Login extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    console.log(this.state);
-    this.props.history.push('/home');
+    const { username } = this.state;
+    const { dispatch } = this.props;
+
+    if (username !== '') {
+      dispatch(authenticateUser(username));
+      this.setState(() => ({ isLogged: true }));
+    }
   };
 
   render() {
+    const { isLogged } = this.state;
+    if (isLogged) {
+      const { from } = this.props.location.state || {
+        from: { pathname: '/home' },
+      };
+      return <Redirect to={from} />;
+    }
+
     return (
       <div className="Login-container">
         <div className="Login-card">
@@ -74,3 +90,17 @@ export default class Login extends Component {
     );
   }
 }
+
+function mapStateToProps({ users, authedUser }) {
+  return {
+    users: Object.values(users).map(user => {
+      return {
+        id: user.id,
+        name: user.name,
+      };
+    }),
+    username: authedUser,
+  };
+}
+
+export default connect(mapStateToProps)(Login);

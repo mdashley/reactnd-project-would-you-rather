@@ -1,0 +1,4 @@
+export const AUTHENTICATE_USER = 'AUTHENTICATE_USER';
+export const SIGN_OUT = 'SIGN_OUT';
+
+export const RECEIVE_USERS = 'RECEIVE_USERS';
