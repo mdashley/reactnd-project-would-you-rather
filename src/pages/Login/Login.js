@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Login.css';
-import logo from '../logo.svg';
+import logo from '../../logo.svg';
 import Button from '@material-ui/core/Button';
 import Fab from '@material-ui/core/Fab';
 import TextField from '@material-ui/core/TextField';
@@ -24,6 +24,7 @@ export default class Login extends Component {
     event.preventDefault();
 
     console.log(this.state);
+    this.props.history.push('/home');
   };
 
   render() {
