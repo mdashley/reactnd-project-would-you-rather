@@ -4,22 +4,19 @@ import { connect } from 'react-redux';
 import { authenticateUser } from '../../actions/authedUser';
 import './Login.css';
 import logo from '../../logo.svg';
-import Button from '@material-ui/core/Button';
 import Fab from '@material-ui/core/Fab';
 import TextField from '@material-ui/core/TextField';
 
 class Login extends Component {
   state = {
     username: '',
-    password: '',
   };
 
   changeHandler = event => {
-    const name = event.target.name;
     const value = event.target.value;
 
     this.setState({
-      [name]: value,
+      username: value,
     });
   };
 
@@ -56,16 +53,6 @@ class Login extends Component {
               variant="outlined"
               value={this.state.username}
               onChange={this.changeHandler}
-              name="username"
-            />
-            <TextField
-              label="Password"
-              type="password"
-              margin="normal"
-              variant="outlined"
-              value={this.state.password}
-              onChange={this.changeHandler}
-              name="password"
             />
             <Fab
               className="Login-btn--primary"
@@ -77,13 +64,6 @@ class Login extends Component {
             >
               Login
             </Fab>
-            <Button
-              className="Login-btn--secondary"
-              color="primary"
-              type="button"
-            >
-              Login as existing user
-            </Button>
           </form>
         </div>
       </div>
